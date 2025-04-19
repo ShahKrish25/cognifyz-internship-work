@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submission Success</title>
+  <style>
+    * {
+      font-family: 'gilroy', Courier, monospace;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(45, 167, 167, 0.404);
+    }
+    .result-box {
+      background-color: #87cbcbd4;
+      width: 80%;
+      padding: 2rem 0;
+      border: none;
+      border-radius: 0.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      text-align: center;
+    }
+    .result-box h2 {
+      margin: 2rem 0;
+    }
+    .result-box p {
+      margin: 0 1rem;
+      font-size: 1rem;
+    }
+    a {
+      display: inline-block;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      outline: none;
+      background-color: #207171d4;
+      color: aliceblue;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: all 0.4s ease;
+    }
+    a:hover {
+      background-color: #1a6262;
+      cursor: pointer;
+    }
+    @media screen and (min-width: 768px) {
+      .result-box {
+        width: 25rem;
+        border-radius: 1rem;
+        gap: 2rem;
+      }
+      .result-box h2 {
+        margin: 2.6rem 0 1.8rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    <h2>Hey, <%= username %>!</h2>
+    <p>You love <%= hobby %>? That's awesome!</p>
+    <p>Submitted on: <%= date %></p>
+    <a href="/">Try Again</a>
+  </div>
+</body>
+</html> 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %>'s Form</title>
+    <style>
+        * {
+            font-family: 'gilroy', Courier, monospace;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(45, 167, 167, 0.404);
+        }
+        form{
+            background-color: #87cbcbd4;
+            min-width: fit-content;
+            width: 80%;
+            height: 53vh;
+            border: none;
+            border-radius: 0.7rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+
+        }
+        form h2{
+            text-align: center;
+            margin: 2rem 0 2rem 0;
+        }
+        form input{
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            margin: 0 1rem;
+            font-size: 1rem;
+            outline: none;
+        }
+        form button{
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            margin: 0 1rem;
+            font-size: 1rem;
+            outline: none;
+            background-color: #207171d4;
+            color:aliceblue;
+            transition: all 0.4s ease;
+        }
+
+        form button:hover{
+            background-color: #1a6262;
+            cursor: pointer;
+        }
+
+
+        @media screen and (min-width: 768px) {
+            form{
+                background-color: #87cbcbd4;
+                min-width: fit-content;
+                width: 25rem;
+                height: 50vh;
+                border: none;
+                border-radius: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+            form h2{
+                text-align: center;
+                margin: 2.6rem 0 1.8rem 0;
+            }
+            form input{
+                border: none;
+                border-radius: 0.5rem;
+                padding: 0.5rem;
+                margin: 0 1rem;
+                font-size: 1rem;
+                outline: none;
+            }
+            form button{
+                border: none;
+                border-radius: 0.5rem;
+                padding: 0.5rem;
+                margin: 0 1rem;
+                font-size: 1rem;
+                outline: none;
+                background-color: #207171d4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="/process" method="POST">
+        <h2>Tell Us About You</h2>
+        <input type="text" name="username" placeholder="Your Username" required>
+        <input type="text" name="hobby" placeholder="Your Favorite Hobby" required>
+        <button type="submit">Send Info</button>
+    </form>
+</body>
+</html>
