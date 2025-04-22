@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %>'s Profile Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-teal-100 flex flex-col">
+    <!-- Header -->
+    <header class="bg-teal-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Krish's Profile Builder</h1>
+            <nav>
+                <a href="/" class="hover:text-teal-200 transition-colors duration-300">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Form Section -->
+    <main class="flex-grow container mx-auto p-4 flex items-center justify-center">
+        <form action="/process" method="POST" onsubmit="return validateForm()" class="bg-teal-200 p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 transform hover:bg-teal-300 duration-200 linear transition-colors">
+            <h2 class="text-xl font-semibold text-center text-teal-800">Build Your Profile</h2>
+            <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                <div class="text-red-500 text-sm">
+                    <ul>
+                        <% errors.forEach(function(error){ %>
+                            <li><%= error %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
+            <div>
+                <label for="username" class="block text-sm font-medium text-teal-700">Username</label>
+                <input type="text" id="username" name="username" placeholder="Your Username" class="username w-full mt-1 p-2 rounded border border-teal-300 focus:ring focus:ring-teal-500"
+                       value="<%= formData && formData.username ? formData.username : '' %>">
+            </div>
+            <div>
+                <label for="college" class="block text-sm font-medium text-teal-700">College</label>
+                <input type="text" id="college" name="college" placeholder="Your College" class="college w-full mt-1 p-2 rounded border border-teal-300 focus:ring focus:ring-teal-500"
+                       value="<%= formData && formData.college ? formData.college : '' %>">
+            </div>
+            <div>
+                <label for="dept" class="block text-sm font-medium text-teal-700">Department</label>
+                <input type="text" id="dept" name="dept" placeholder="Your Department" class="dept w-full mt-1 p-2 rounded border border-teal-300 focus:ring focus:ring-teal-500"
+                       value="<%= formData && formData.dept ? formData.dept : '' %>">
+            </div>
+            <div>
+                <label for="year" class="block text-sm font-medium text-teal-700">Year of Study</label>
+                <select id="year" name="year" class="year w-full mt-1 p-2 rounded border border-teal-300 focus:ring focus:ring-teal-500">
+                    <option value="" disabled <%= !formData || !formData.year ? 'selected' : '' %>>Select Year</option>
+                    <option value="1st" <%= formData && formData.year === '1st' ? 'selected' : '' %>>1st Year</option>
+                    <option value="2nd" <%= formData && formData.year === '2nd' ? 'selected' : '' %>>2nd Year</option>
+                    <option value="3rd" <%= formData && formData.year === '3rd' ? 'selected' : '' %>>3rd Year</option>
+                    <option value="4th" <%= formData && formData.year === '4th' ? 'selected' : '' %>>4th Year</option>
+                </select>
+            </div>
+            <div>
+                <label for="hobby" class="block text-sm font-medium text-teal-700">Favorite Hobby</label>
+                <input type="text" id="hobby" name="hobby" placeholder="Your Favorite Hobby" class="hobby w-full mt-1 p-2 rounded border border-teal-300 focus:ring focus:ring-teal-500"
+                       value="<%= formData && formData.hobby ? formData.hobby : '' %>">
+            </div>
+            <button type="submit" class="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700 transition-colors duration-300 animate-pulse">Submit Profile</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-teal-600 text-white p-4 text-center">
+        <p>&copy; 2025 Krish Shah | Built for Cognifyz Technologies</p>
+    </footer>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            const username = document.querySelector('.username');
+            const college = document.querySelector('.college');
+            const dept = document.querySelector('.dept');
+            const year = document.querySelector('.year');
+            const hobby = document.querySelector('.hobby');
+            
+            [username, college, dept, year, hobby].forEach(el => el.classList.remove('error'));
+            
+            if (!username.value.trim() || username.value.trim().length < 3) {
+                alert('Username must be at least 3 characters.');
+                username.classList.add('error');
+                return false;
+            }
+            if (!college.value.trim() || /^\d+$/.test(college.value.trim())) {
+                alert('Please enter a valid college name (should not be numeric).');
+                college.classList.add('error');
+                return false;
+            }
+            if (!dept.value.trim() || /^\d+$/.test(dept.value.trim())) {
+                alert('Please enter a valid department name (should not be numeric).');
+                return false;
+            }
+            if (!year.value) {
+                alert('Please select your year of study.');
+                year.classList.add('error');
+                return false;
+            }
+            if (!hobby.value.trim()) {
+                alert('Please enter your favorite hobby.');
+                hobby.classList.add('error');
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <style>
+        .error {
+            border: 1px solid red;
+        }
+    </style>
+</body>
+</html>
