@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Error</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-teal-100 flex flex-col">
+    <header class="bg-teal-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Krish's Profile Builder</h1>
+            <nav>
+                <a href="#form" class="hover:text-teal-200 transition-colors duration-300 route-link" data-route="form">Form</a>
+                <a href="#history" class="hover:text-teal-200 transition-colors duration-300 route-link" data-route="history">Submission History</a>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-grow container mx-auto p-4 flex items-center justify-center">
+        <div class="bg-teal-200 p-6 rounded-lg shadow-lg w-full max-w-md text-center space-y-4 transform hover:scale-105 transition-transform duration-300">
+            <h1 class="text-xl font-semibold text-teal-800">Invalid Data Provided</h1>
+            <ul class="text-red-500 text-sm">
+                <% errors.forEach(error => { %>
+                    <li><%= error %></li>
+                <% }) %>
+            </ul>
+            <a href="#form" class="inline-block bg-teal-600 text-white p-2 rounded hover:bg-teal-700 transition-colors duration-300 route-link" data-route="form">Go Back</a>
+        </div>
+    </main>
+    <footer class="bg-teal-600 text-white p-4 text-center">
+        <p>&copy; 2025 Krish Shah | Built for Cognifyz Technologies</p>
+    </footer>
+</body>
+</html>
