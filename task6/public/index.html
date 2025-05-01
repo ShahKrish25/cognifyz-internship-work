@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2098/2098402.png" type="image/x-icon">
+    <style>
+        #taskInput.error, #username.error, #password.error {
+            border: 1.2px solid red !important;
+            box-shadow: 0 0 5px red !important;
+            animation: shake 0.3s ease-in-out;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-400 text-center min-h-screen p-8">
+    <div id="auth-section" class="max-w-xl mx-auto bg-[#a3ada9e3] shadow-md rounded p-6">
+        <h2 class="text-3xl font-bold mb-4">📝 Task Manager</h2>
+        <div id="login-form" class="space-y-4">
+            <h3 class="text-xl font-semibold">Login</h3>
+            <input id="username" type="text" placeholder="Username" class="border border-gray-400 p-2 w-full rounded" />
+            <input id="password" type="password" placeholder="Password" class="border border-gray-400 p-2 w-full rounded" />
+            <div class="flex gap-2">
+                <button onclick="login()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Login</button>
+                <button onclick="showRegister()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 w-full">Register</button>
+            </div>
+        </div>
+        <div id="register-form" class="space-y-4 hidden">
+            <h3 class="text-xl font-semibold">Register</h3>
+            <input id="reg-username" type="text" placeholder="Username" class="border border-gray-400 p-2 w-full rounded" />
+            <input id="reg-password" type="password" placeholder="Password" class="border border-gray-400 p-2 w-full rounded" />
+            <div class="flex gap-2">
+                <button onclick="register()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Register</button>
+                <button onclick="showLogin()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 w-full">Back to Login</button>
+            </div>
+        </div>
+        <p id="auth-error" class="text-red-500 hidden"></p>
+    </div>
+    <div id="task-section" class="max-w-xl mx-auto bg-[#a3ada9e3] shadow-md rounded p-6 hidden">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-3xl font-bold">📝 Task Manager</h2>
+            <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</button>
+        </div>
+        <div class="flex gap-2 mb-4">
+            <input id="taskInput" type="text" placeholder="New Task" class="border border-gray-400 p-2 flex-1 rounded duration-200 ease-in-out" />
+            <button onclick="addTask()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add</button>
+        </div>
+        <ul id="taskList" class="space-y-2 text-left"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
