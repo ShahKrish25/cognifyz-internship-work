@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // MongoDB connection
-const dbUrl = 'mongodb+srv://krish:HoARFeJKjlgeOpCB@task6cluster.khxdbks.mongodb.net/';
+const dbUrl = 'yourKey';
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -55,7 +55,7 @@ app.post('/api/login', async (req, res) => {
         if (!isMatch) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
-        const token = jwt.sign({ userId: user._id }, 'myKey2509', { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user._id }, 'yourToken', { expiresIn: '1h' });
         res.json({ token });
     } catch (err) {
         res.status(500).json({ error: 'Server error' });    
