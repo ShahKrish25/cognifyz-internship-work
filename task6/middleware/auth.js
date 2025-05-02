@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
         return res.status(401).json({ error: 'No token provided' });
     }
     try {
-        const decoded = jwt.verify(token, 'myKey2509');
+        const decoded = jwt.verify(token, 'yourToken');
         if (!decoded) {
             console.log('Invalid token:', decoded);
             return res.status(401).json({ error: 'Invalid token' });
